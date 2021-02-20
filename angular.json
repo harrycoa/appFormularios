@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "appFormularios"
+    }
+  },
+  "defaultProject": "appFormularios",
+  "cli": {
+    "analytics": false
+  }
 }
