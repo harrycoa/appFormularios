@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-template',
@@ -10,6 +11,10 @@ export class TemplateComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  guardar (forma: NgForm) {
+    console.log(forma.value);
   }
 
 }
