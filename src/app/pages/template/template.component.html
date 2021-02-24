@@ -16,7 +16,10 @@
                [ngModel]="usuario.nombre"
                placeholder="Nombre"
                required
+               minlength = "5"
                #nombre="ngModel">
+        <small *ngIf="nombre.invalid && nombre.touched"
+               class='form-text text-danger'>Ingrese un nombre minimo de 5 letras</small>
       </div>
     </div>
     <br>
@@ -33,6 +36,8 @@
                placeholder="Apellido"
                required
                #apellido="ngModel">
+        <small *ngIf="apellido.invalid && apellido.touched"
+        class='form-text text-danger'>Ingrese un nombre minimo de 5 letras</small>
       </div>
     </div>
   </div>
@@ -51,11 +56,60 @@
              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
              required
              #correo="ngModel">
+      <small *ngIf="correo.invalid && correo.touched"
+      class='form-text text-danger'>el correo es obligatorio</small>
     </div>
   </div>
-
   <br>
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Pais</label>
+    <div class="col-8">
+      <select class="form-control"
+              name="pais"
+              [disabled]="paises.length ===0"
+              [ngModel]="usuario.pais"
+              [class.is-invalid]="pais.invalid && pais.touched"
+              required
+              #pais="ngModel">
+        <small *ngIf="pais.invalid && pais.touched"
+        class='form-text text-danger'>el pais es obligatorio</small>
+        <option *ngFor ="let pais of paises"
+                [value]="pais.codigo">
+            {{ pais.nombre }}
+        </option>
 
+      </select>
+    </div>
+  </div>
+  <br>
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Genero</label>
+    <div class="col-8">
+      <div class="form-check form-check-inline">
+        <input class="form-check-input"
+               type="radio"
+               name="genero"
+               value="M"
+               [class.is-invalid]="genero.invalid && genero.touched"
+               required
+               [ngModel]="usuario.genero"
+               #genero=ngModel>
+        <label class="form-check-label">Masculino</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input"
+               type="radio"
+               name="genero"
+               value="F"
+               [class.is-invalid]="genero.invalid && genero.touched"
+               required
+               [ngModel]="usuario.genero"
+               #genero=ngModel>
+        <label class="form-check-label">Femenino</label>
+      </div>
+    </div>
+  </div>
+  <br>
   <div class="form-group row">
     <label class="col-2 col-form-label">&nbsp;</label>
     <div class="input-group col-md-8">
